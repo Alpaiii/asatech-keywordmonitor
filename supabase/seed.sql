@@ -1,0 +1,2 @@
+-- Seed sengaja kosong. Data pengguna dibuat melalui Supabase Auth lokal.
+-- Data SEO demo tidak dimasukkan agar tidak terlihat sebagai data live.
