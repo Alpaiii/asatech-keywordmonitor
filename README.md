@@ -19,8 +19,9 @@ Web dashboard untuk **keyword research** dan **SEO monitoring**, dengan data res
 3. [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — sistem dan struktur kode
 4. [`docs/DATABASE.md`](docs/DATABASE.md) — rancangan penyimpanan
 5. [`docs/API.md`](docs/API.md) — kontrak endpoint
-6. [`docs/ROADMAP.md`](docs/ROADMAP.md) — tahapan kerja
-7. [`AGENTS.md`](AGENTS.md) — aturan coding agent
+6. [`docs/PHASE0_PRODUCT_CONTRACT.md`](docs/PHASE0_PRODUCT_CONTRACT.md) — kontrak fitur gabungan, akses, sumber posisi, dan gate
+7. [`docs/ROADMAP.md`](docs/ROADMAP.md) — tahapan kerja
+8. [`AGENTS.md`](AGENTS.md) — aturan coding agent
 
 ## Catatan data
 

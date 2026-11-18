@@ -9,7 +9,7 @@ export default function LoginPage() {
         <h1 className="mt-3 text-3xl font-semibold tracking-tight">
           Masuk ke workspace
         </h1>
-        <p className="mt-3 text-sm leading-6 text-slate-400">
+        <p className="mt-3 text-sm leading-6 text-slate-300">
           Auth lokal memakai Supabase. Consent Google data tetap terpisah.
         </p>
         {isSupabaseConfigured ? (

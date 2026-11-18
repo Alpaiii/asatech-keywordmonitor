@@ -3,6 +3,8 @@ coverage
 node_modules
 pnpm-lock.yaml
 supabase/.temp
+test-results
+playwright-report
 AGENTS.md
 README.md
 docs

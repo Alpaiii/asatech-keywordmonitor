@@ -10,16 +10,17 @@ Pengguna perlu berpindah antara tool riset keyword, GSC, dan GA4; indikator kera
 
 ## Sasaran MVP
 
-1. Autentikasi dan isolasi workspace.
-2. Menambahkan proyek website.
-3. Menghubungkan dan memilih properti GSC yang memiliki izin.
-4. Dashboard query/pages GSC: clicks, impressions, CTR, average position dengan filter tanggal.
-5. Menyimpan keyword target; riset keyword menggunakan provider adapter, dengan state `not_configured` bila API belum tersedia.
-6. Menunjukkan freshness data, error sinkronisasi, loading/empty/error states.
+1. Autentikasi dan isolasi workspace; anggota workspace yang sama berbagi data sesuai role.
+2. Menambahkan proyek website dan mengelola target keyword, PIC, priority, deadline, serta check-in posisi manual.
+3. Menyimpan riwayat posisi dan bukti tanpa menimpa sejarah; audit operasional menampilkan item yang perlu tindakan.
+4. Menghubungkan dan memilih properti GSC yang memiliki izin.
+5. Dashboard query/pages GSC: clicks, impressions, CTR, average position dengan filter tanggal.
+6. Menyimpan keyword target; riset keyword menggunakan provider adapter, dengan state `not_configured` bila API belum tersedia.
+7. Menunjukkan sumber posisi (`manual`, `gsc_average_position`, atau `serp_provider`), freshness data, error sinkronisasi, loading/empty/error states.
 
 ## Setelah MVP
 
-GA4 organic traffic, ekspor CSV, opportunity scoring, perbandingan periode, competitor SERP tracking, notifikasi, billing.
+GA4 organic traffic, article quality check, opportunity scoring, laporan Excel/PDF, perbandingan periode, competitor SERP tracking berlisensi, notifikasi, billing.
 
 ## Di luar scope MVP
 
@@ -27,13 +28,15 @@ Menjamin ranking #1; mengambil keyword rahasia dari GA4; scraping Google SERP ta
 
 ## Peran
 
-- Owner: mengelola workspace dan integrasi.
-- Member: membaca/meneliti proyek sesuai izin.
+- Owner: mengelola workspace, anggota, integrasi, archive/delete, dan seluruh pekerjaan SEO.
+- Member: membaca data workspace dan menjalankan pekerjaan SEO, termasuk project, target keyword, check-in, quality check, dan export; tidak mengelola anggota/integrasi atau menghapus project.
 - Sistem: menjalankan sinkronisasi terjadwal.
+
+Workspace adalah batas tenant. Pengguna dalam workspace yang sama dapat melihat data workspace sesuai role; non-member tidak mendapat akses walaupun mengetahui ID resource. PIN bersama tidak digunakan.
 
 ## User flow
 
-Login → buat workspace → buat proyek website → connect Google → pilih properti GSC → initial sync → lihat dashboard/filter → simpan keyword → pantau tren.
+Login → buat/pilih workspace → buat proyek website → tambah target keyword/PIC → catat posisi dan bukti → audit pekerjaan → connect Google → pilih properti GSC → initial sync → lihat dashboard/filter → riset/simpan keyword → pantau tren dan buat laporan.
 
 ## Prinsip kualitas
 
@@ -45,4 +48,4 @@ Login → buat workspace → buat proyek website → connect Google → pilih pr
 
 ## Referensi mendetail
 
-Lihat [PRD.md](PRD.md) sebagai sumber kebenaran requirements. Jika ada konflik, tandai keputusan sebelum mengubah scope.
+Lihat [PRD.md](PRD.md) sebagai sumber kebenaran requirements. Kontrak penggabungan fitur dan gate implementasi ada di [PHASE0_PRODUCT_CONTRACT.md](PHASE0_PRODUCT_CONTRACT.md). Jika ada konflik, tandai keputusan sebelum mengubah scope.

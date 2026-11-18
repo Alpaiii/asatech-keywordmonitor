@@ -19,7 +19,7 @@ Protected scheduler → sync worker → API adapters → PostgreSQL
 ## Batas layanan
 
 - **Web UI**: presentasi, filters, interaction, no provider secrets.
-- **Domain**: workspaces, projects, keywords, search performance, reporting.
+- **Domain**: workspaces, projects, keyword research, target keyword operations, rank check-ins, audit, article quality, search performance, opportunities, reporting.
 - **Integrations**: Google connection management, refresh tokens encrypted server-side, consent/scopes.
 - **Sync**: idempotent upsert by project/date/query/device/country; retry 429/5xx, halt on revoked permissions.
 - **Data access**: enforce authenticated permissions on server plus RLS.
@@ -68,7 +68,11 @@ export interface KeywordProvider {
 ## Keputusan utama
 
 - Google OAuth untuk GSC/GA4 dipisahkan dari login aplikasi.
+- Workspace adalah tenant boundary; anggota workspace sama berbagi data sesuai role. PIN bersama tidak digunakan.
+- Project adalah representasi website; PIC merujuk member workspace.
+- Posisi manual, Google Search Console average position, dan licensed SERP snapshot adalah sumber terpisah.
 - Google Search Console average position tidak dipasarkan sebagai ranking real-time.
 - Data Ads `competition` adalah kompetisi iklan, bukan organic keyword difficulty.
 - Provider yang belum mendapat izin tidak boleh diam-diam diganti dengan angka palsu.
 - Pencatatan sync status dan sumber data wajib.
+- Kontrak gabungan lengkap ada di `docs/PHASE0_PRODUCT_CONTRACT.md`.

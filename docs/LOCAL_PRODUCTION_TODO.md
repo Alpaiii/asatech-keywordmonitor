@@ -178,7 +178,7 @@ node -e "console.log(require('crypto').randomBytes(32).toString('base64url'))"
 
 **Selesai bila:** contract test endpoint workspace/project minimum lulus.
 
-## 9. Pengujian dan quality gate
+## 9. Pengujian (opsional, jalankan saat diminta)
 
 - [ ] Unit test validasi URL/domain.
 - [ ] Unit test helper authorization.
@@ -190,33 +190,13 @@ node -e "console.log(require('crypto').randomBytes(32).toString('base64url'))"
 - [ ] Pastikan tidak ada secret dalam client bundle atau log.
 - [ ] Pastikan tidak ada hard-coded metrik SEO live.
 
-Quality gate:
+Quality gate (jalankan manual: `pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm exec playwright test`):
 
-```bash
-pnpm lint
-pnpm typecheck
-pnpm test
-pnpm build
-pnpm exec playwright test
-```
-
-**Selesai bila:** semua perintah berhasil tanpa error.
+**Selesai bila:** semua perintah berhasil tanpa error (ketika dijalankan).
 
 ## 10. Menjalankan production build lokal
 
-- [ ] Pastikan Supabase lokal hidup:
-
-```bash
-supabase start
-```
-
-- [ ] Reset database bila dibutuhkan:
-
-```bash
-supabase db reset
-```
-
-- [ ] Build aplikasi:
+- [ ] Build aplikasi (tanpa ketergantungan database/migrasi):
 
 ```bash
 pnpm build
@@ -229,11 +209,10 @@ pnpm start
 ```
 
 - [ ] Buka `http://localhost:3000`.
-- [ ] Verifikasi login, session, workspace, project CRUD, RLS, dan responsive UI.
-- [ ] Verifikasi restart aplikasi tidak menghilangkan data database.
-- [ ] Verifikasi pesan error saat Supabase berhenti.
+- [ ] Verifikasi manual: UI render, halaman statis, health endpoint.
+- [ ] Database dan Supabase hanya dibutuhkan saat runtime (`pnpm dev` / `pnpm start` dengan session), bukan saat build.
 
-**Selesai bila:** alur utama bekerja lewat production server, bukan `pnpm dev`.
+**Selesai bila:** `pnpm build` lulus tanpa error dan `pnpm start` menjalankan server production.
 
 ## 11. Operasi dan dokumentasi lokal
 
@@ -271,12 +250,12 @@ supabase stop
 Production lokal tahap foundation selesai bila:
 
 - [ ] `supabase start` menjalankan seluruh layanan database/auth lokal.
-- [ ] `supabase db reset` berhasil dari kondisi bersih.
-- [ ] `pnpm build && pnpm start` menjalankan aplikasi di `http://localhost:3000`.
-- [ ] User lokal dapat login dan logout.
+- [ ] `pnpm build` lulus tanpa error (tanpa ketergantungan database/migrasi).
+- [ ] `pnpm start` menjalankan aplikasi di `http://localhost:3000`.
+- [ ] User lokal dapat login dan logout (runtime, butuh Supabase hidup).
 - [ ] User dapat membuat dan mengelola project dalam workspace sendiri.
 - [ ] Workspace lain tidak dapat membaca atau mengubah data tersebut.
 - [ ] UI responsif menampilkan status provider yang jujur tanpa metrik fabrikasi.
-- [ ] Lint, typecheck, unit/integration test, E2E, dan production build lulus.
+- [ ] Lint, typecheck, unit/integration test, E2E **lulus ketika dijalankan manual**.
 - [ ] Tidak ada secret yang terlacak Git atau terkirim ke client.
 - [ ] `docs/ROADMAP.md` hanya diperbarui untuk item yang benar-benar selesai.

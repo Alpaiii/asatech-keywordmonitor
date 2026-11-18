@@ -19,12 +19,15 @@ export function AuthForm() {
   return (
     <form className="mt-8 space-y-5">
       <div>
-        <label className="mb-2 block text-sm font-medium" htmlFor="email">
+        <label
+          className="mb-2 block text-sm font-medium text-slate-200"
+          htmlFor="email"
+        >
           Email
         </label>
         <input
           autoComplete="email"
-          className="w-full rounded-xl border border-slate-700 bg-slate-900 px-4 py-3 outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
+          className="w-full rounded-xl border border-slate-600 bg-slate-900 px-4 py-3 text-slate-100 outline-none placeholder:text-slate-500 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
           id="email"
           name="email"
           required
@@ -32,12 +35,15 @@ export function AuthForm() {
         />
       </div>
       <div>
-        <label className="mb-2 block text-sm font-medium" htmlFor="password">
+        <label
+          className="mb-2 block text-sm font-medium text-slate-200"
+          htmlFor="password"
+        >
           Password
         </label>
         <input
           autoComplete="current-password"
-          className="w-full rounded-xl border border-slate-700 bg-slate-900 px-4 py-3 outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
+          className="w-full rounded-xl border border-slate-600 bg-slate-900 px-4 py-3 text-slate-100 outline-none placeholder:text-slate-500 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
           id="password"
           minLength={8}
           name="password"

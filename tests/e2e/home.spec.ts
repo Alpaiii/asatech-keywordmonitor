@@ -1,10 +1,11 @@
 import { expect, test } from "@playwright/test";
 
-test("menampilkan status fondasi lokal", async ({ page }) => {
+test("root langsung membuka halaman login", async ({ page }) => {
   await page.goto("/");
 
+  await expect(page).toHaveURL(/\/login$/);
   await expect(
-    page.getByRole("heading", { name: /fondasi lokal sedang disiapkan/i }),
+    page.getByRole("heading", { name: "Masuk ke workspace" }),
   ).toBeVisible();
-  await expect(page.getByText("not_configured")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Masuk" })).toBeVisible();
 });

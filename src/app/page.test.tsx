@@ -1,15 +1,23 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import Home from "./page";
 
-describe("Home", () => {
-  it("menampilkan status provider tanpa metrik palsu", () => {
-    render(<Home />);
+const { redirectMock } = vi.hoisted(() => ({
+  redirectMock: vi.fn(() => {
+    throw new Error("NEXT_REDIRECT");
+  }),
+}));
 
-    expect(
-      screen.getByRole("heading", { name: /fondasi lokal sedang disiapkan/i }),
-    ).toBeInTheDocument();
-    expect(screen.getByText("not_configured")).toBeInTheDocument();
-    expect(screen.getByText("Belum terhubung")).toBeInTheDocument();
+vi.mock("next/navigation", () => ({
+  redirect: redirectMock,
+}));
+
+describe("Home", () => {
+  beforeEach(() => {
+    redirectMock.mockClear();
+  });
+
+  it("mengarahkan root ke halaman login", () => {
+    expect(() => Home()).toThrow("NEXT_REDIRECT");
+    expect(redirectMock).toHaveBeenCalledWith("/login");
   });
 });
